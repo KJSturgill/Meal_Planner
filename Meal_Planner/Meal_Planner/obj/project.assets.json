@@ -61,11 +61,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bisho\\Desktop\\CodeKY\\Meal_Planner_Project\\Meal_Planner\\Meal_Planner\\MealPlanner.csproj",
+      "projectUniqueName": "C:\\Users\\bisho\\Desktop\\CodeKY\\Meal_Planner\\Meal_Planner\\Meal_Planner\\MealPlanner.csproj",
       "projectName": "MealPlanner",
-      "projectPath": "C:\\Users\\bisho\\Desktop\\CodeKY\\Meal_Planner_Project\\Meal_Planner\\Meal_Planner\\MealPlanner.csproj",
+      "projectPath": "C:\\Users\\bisho\\Desktop\\CodeKY\\Meal_Planner\\Meal_Planner\\Meal_Planner\\MealPlanner.csproj",
       "packagesPath": "C:\\Users\\bisho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bisho\\Desktop\\CodeKY\\Meal_Planner_Project\\Meal_Planner\\Meal_Planner\\obj\\",
+      "outputPath": "C:\\Users\\bisho\\Desktop\\CodeKY\\Meal_Planner\\Meal_Planner\\Meal_Planner\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

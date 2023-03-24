@@ -1,0 +1,17 @@
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\bin\Debug\net6.0\MealPlanner.exe
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\bin\Debug\net6.0\MealPlanner.deps.json
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\bin\Debug\net6.0\MealPlanner.runtimeconfig.json
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\bin\Debug\net6.0\MealPlanner.dll
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\bin\Debug\net6.0\MealPlanner.pdb
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.csproj.AssemblyReference.cache
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.AssemblyInfoInputs.cache
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.AssemblyInfo.cs
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.csproj.CoreCompileInputs.cache
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.csproj.CopyComplete
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.dll
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\refint\MealPlanner.dll
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.pdb
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\MealPlanner.genruntimeconfig.cache
+C:\Users\bisho\Desktop\CodeKY\Meal_Planner\Meal_Planner\Meal_Planner\obj\Debug\net6.0\ref\MealPlanner.dll

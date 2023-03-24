@@ -20,9 +20,9 @@ namespace MealPlanner
             result.Add(new Meal(7, "Jumbalaya", new string[] { "veggie", "turkey", "shrimp", "chicken", "sausage" }, new string[] { "test, will add later" }));
             result.Add(new Meal(8, "Gumbo", new string[] { "veggie", "turkey", "shrimp", "chicken", "sausage" }, new string[] { "test, will add later" }));
             result.Add(new Meal(9, "Sweet Potato Tacos", new string[] { "veggie","chicken", "turkey" }, new string[] { "test, will add later" }));
-            result.Add(new Meal(10, "RoadKill (I did not give it this name)", new string[] {"beef", "turkey", "shrimp", "chicken", "sausage","steak","spam","ham", "leftover" }, new string[] { "Lets be honest, I came up with this when I was 10, my friends all called it road kill because its a BBQ rice with essentially any meat you have, usually leftover meat in the freezer that id use before it got frostbitten, hence where my friends came up with the name" }));
+            result.Add(new Meal(10, "RoadKill (I did not give it this name)", new string[] {"beef", "turkey", "shrimp", "chicken", "sausage","steak","spam", "leftover" }, new string[] { "Lets be honest, I came up with this when I was 10, my friends all called it road kill because its a BBQ rice with essentially any meat you have, usually leftover meat in the freezer that id use before it got frostbitten, hence where my friends came up with the name" }));
             return result;
         }
     }
 }
-// Protiens involved (chicken, veggie, egg, spam, steak, shrimp, sausage, beef, turkey, ham, tofu Leftover Meat )
+// Protiens involved (chicken, veggie, egg, spam, steak, shrimp, sausage, beef, turkey,  tofu,  Leftover Meat )

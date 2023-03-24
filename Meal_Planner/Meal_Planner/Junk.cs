@@ -8,9 +8,9 @@ namespace MealPlanner
 {
     internal class Junk : Food
     {
-        public string[] Suggestion { get; set; }
+        public string Suggestion { get; set; }
 
-        public Junk(int number, string name, string[] suggestion)
+        public Junk(int number, string name, string suggestion)
         {
             this.Number = number;
             this.Name = name;
