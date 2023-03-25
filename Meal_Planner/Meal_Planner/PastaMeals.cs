@@ -20,7 +20,7 @@ namespace MealPlanner
             result.Add(new Meal(7, "Sun Dried Tomato Pasta", new string[] { "chicken","veggie" }, "test, will add later"));
             result.Add(new Meal(8, "Lasagna", new string[] { "veggie", "beef","turkey","sausage" }, "test, will add later"));
             result.Add(new Meal(9, "French Onion Pasta", new string[] { "veggie", "turkey" }, "test, will add later"));
-            result.Add(new Meal(10, "Jumbalaya", new string[] { "veggie","turkey","shrimp","chicken","sausage" }, "test, will add later"));
+            result.Add(new Meal(10, "Jambalaya", new string[] { "veggie","turkey","shrimp","chicken","sausage" }, "test, will add later"));
             result.Add(new Meal(11, "Stuffed Shells", new string[] { "veggie", "beef","chicken","sausage" }, "test, will add later"));
             return result;
         }
