@@ -284,7 +284,7 @@ namespace MealPlanner
                 else if (userInput2 == 2)
                 {
                     Console.WriteLine(" ");
-                    Console.WriteLine("What Protien would you like?");
+                    Console.WriteLine("What Protein would you like?");
                     Console.WriteLine("Choose only one, some dishes may\nuse multiple or can switch them out\nfor different options:");
                     Console.WriteLine(" ");
                     Console.WriteLine("Press 1 for Vegitarian options.");
@@ -524,7 +524,7 @@ namespace MealPlanner
                 else if (userInput2 == 3)
                 {
                     Console.WriteLine(" ");
-                    Console.WriteLine("What Protien would you like?");
+                    Console.WriteLine("What Protein would you like?");
                     Console.WriteLine("Choose only one, some dishes may\nuse multiple or can switch them out\nfor different options:");
                     Console.WriteLine(" ");
                     Console.WriteLine("Press 1 for Vegitarian options.");
@@ -951,7 +951,7 @@ namespace MealPlanner
                 {
                     Console.WriteLine(" ");
                     Thread.Sleep(500);
-                    Console.WriteLine("What Protien would you like?");
+                    Console.WriteLine("What Protein would you like?");
                     Console.WriteLine("Choose only one, some dishes may\nuse multiple or can switch them out\nfor different options:");
                     Console.WriteLine(" ");
                     Console.WriteLine("Press 1 for Vegitarian options.");
@@ -1251,7 +1251,7 @@ namespace MealPlanner
                 {
                     Console.WriteLine(" ");
                     Thread.Sleep(500);
-                    Console.WriteLine("What Protien would you like?");
+                    Console.WriteLine("What Protein would you like?");
                     Console.WriteLine("Choose only one, some dishes may\nuse multiple or can switch them out\nfor different options:");
                     Console.WriteLine(" ");
                     Console.WriteLine("Press 1 for Vegitarian options.");
