@@ -12,7 +12,7 @@ namespace MealPlanner
         {
             List<Meal> result = new List<Meal>();
             result.Add(new Meal(1, "Chicken Noodle Soup", new string[] { "chicken" },  "test, will add later" ));
-            result.Add(new Meal(2, "Potato Soup", new string[] { "veggie","bacon","sausage" },"test, will add later" ));
+            result.Add(new Meal(2, "Potato Soup", new string[] { "veggie","bacon","sausage" }, "Potatoes\nMashed Potato Mix\nOnion\nCelery\nGreen Onion\nBacon(optional)\nVeggie Stock\nVeggie Bouillon\nCheddar Cheese Shredded\nHeavy Cream"));
             result.Add(new Meal(3, "Potato Leak Soup", new string[] { "veggie","chicken" }, "test, will add later"));
             result.Add(new Meal(4, "Cajun Potato Soup", new string[] { "bacon", "sausage" }, "test, will add later"));
             result.Add(new Meal(5, "Tomato Soup", new string[] { "veggie" }, "test, will add later"));
