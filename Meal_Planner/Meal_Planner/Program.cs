@@ -21,7 +21,7 @@ namespace MealPlanner
 
             Console.WriteLine("Let's figure out what to eat.");
             Console.WriteLine(" ");
-            Console.WriteLine("Press 1 to look through meals.");
+            Console.WriteLine("Press any number to look through meals.");
             Console.WriteLine("Press 0 to close the program.");
             int userInput = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine(" ");
@@ -35,9 +35,7 @@ namespace MealPlanner
                     Thread.Sleep(1000);
                     break;
                 }
-
-
-            { 
+ 
                 Console.WriteLine(" ");
                 Console.WriteLine("Press 1 for Soups.");
                 Console.WriteLine("Press 2 for Pastas.");
@@ -1788,19 +1786,21 @@ namespace MealPlanner
                 else if (userInput2 == 6)
                 {
                     foreach (Junk meal in lowEffortMeals)
+                    {
                         Console.WriteLine($"Option {meal.Number}, {meal.Name}. Try: {meal.Suggestion}\n ");
-                        Console.WriteLine(" ");
-                        Console.WriteLine(" ");
-                        Console.WriteLine("Press 0 to close the program.");
-                        Console.WriteLine("Press any other number to go back to the beginning.");
-                        int finalInput = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine(" ");
-                        while (finalInput == 0)
-                        {
-                            Console.WriteLine("Goodbye!");
-                            Thread.Sleep(1000);
-                            Environment.Exit(0);
-                        }
+                    }
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("Press 0 to close the program.");
+                    Console.WriteLine("Press any other number to go back to the beginning.");
+                    int finalInput = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine(" ");    
+                    while (finalInput == 0)
+                    {
+                        Console.WriteLine("Goodbye!");
+                        Thread.Sleep(1000);
+                        Environment.Exit(0);
+                    }
 
                 }
                 else
@@ -1811,8 +1811,7 @@ namespace MealPlanner
                     Console.WriteLine(" ");
                     Console.WriteLine(" ");
                     Console.WriteLine(" ");
-                }
-            }
+                }            
             }
         }
     }
