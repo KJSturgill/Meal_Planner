@@ -8,7 +8,7 @@ namespace MealPlanner
 {
     class LowEffortMeals
     {
-        public static List<Junk> ListLowEffortMeals()
+        public static List<Junk> GetLowEffortMealsList()
         {
             List<Junk> result= new List<Junk>();
             result.Add(new Junk(1, "Ramen", "I'd recommend Shin Ramen (maybe mixed wiht mac n cheese)" ));

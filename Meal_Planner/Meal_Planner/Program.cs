@@ -12,12 +12,12 @@ namespace MealPlanner
     {
         static void Main(string[] args)
         {
-            List<Meal> soupMeals = SoupMeals.ListSoupMeals();
-            List<Meal> pastaMeals = PastaMeals.ListPastaMeals();
-            List<Meal> riceMeals = RiceMeals.ListRiceMeals();
-            List<Meal> asianMeals = AsianMeals.ListAsianMeals();
-            List<Meal> comfortMeals = ComfortMeals.ListComfortMeals();
-            List<Junk> lowEffortMeals = LowEffortMeals.ListLowEffortMeals();
+            List<Meal> soupMeals = SoupMeals.GetSoupMealsList();
+            List<Meal> pastaMeals = PastaMeals.GetPastaMealsList();
+            List<Meal> riceMeals = RiceMeals.GetRiceMealsList();
+            List<Meal> asianMeals = AsianMeals.GetAsianMealsList();
+            List<Meal> comfortMeals = ComfortMeals.GetComfortMealsList();
+            List<Junk> lowEffortMeals = LowEffortMeals.GetLowEffortMealsList();
 
             Console.WriteLine("Let's figure out what to eat.");
             Console.WriteLine(" ");
@@ -28,12 +28,15 @@ namespace MealPlanner
 
             while (userInput != 0)
             {
-                //Console.WriteLine(" ");
-                //Console.WriteLine("Press 1 to look through meals.");
-                //Console.WriteLine("Press 0 to close the program.");
-                //int userInput = Convert.ToInt32(Console.ReadLine());
 
-            if (userInput == 1)
+                if (userInput == 0)
+                {
+                    Console.WriteLine("Goodbye!");
+                    Thread.Sleep(1000);
+                    break;
+                }
+
+
             { 
                 Console.WriteLine(" ");
                 Console.WriteLine("Press 1 for Soups.");
@@ -43,9 +46,9 @@ namespace MealPlanner
                 Console.WriteLine("Press 5 for Comfort Meals.");
                 Console.WriteLine("Press 6 for Low Effort Options.");
                 int userInput2 = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine(" ");
+                Console.WriteLine(" ");
 
-                    if (userInput2 == 1)
+                if (userInput2 == 1)
                 {
                     Console.WriteLine(" ");
                     Console.WriteLine("What Protien would you like?");
@@ -58,220 +61,243 @@ namespace MealPlanner
                     Console.WriteLine("Press 5 for Sausage options.");
                     Console.WriteLine("Press 6 for Egg options");
                     int userInput3 = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine(" ");
+                    Console.WriteLine(" ");
 
-                        if (userInput3 == 1)
+                    if (userInput3 == 1)
                     {
-                            Console.WriteLine("You chose Vegitarian");
-                            Console.WriteLine(" ");
-                            var linqSoupMeals = from Meal in soupMeals
-                                                where Meal.Protien.Contains("veggie")
-                                                select Meal;
+                        Console.WriteLine("You chose Vegitarian");
+                        Console.WriteLine(" ");
+                        var linqSoupMeals = from Meal in soupMeals
+                                            where Meal.Protein.Contains("veggie")
+                                            select Meal;
 
-                            foreach (var Meal in linqSoupMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var soupMealList = from Meal in linqSoupMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in soupMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
+                        foreach (var Meal in linqSoupMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var soupMealList = from Meal in linqSoupMeals
+                                           where Meal.Number == ingredientsList
+                                           select Meal;
+
+                        foreach (var Meal in soupMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 2)
                     {
-                            Console.WriteLine("You chose Chicken");
-                            Console.WriteLine(" ");
-                            var linqSoupMeals = from Meal in soupMeals
-                                                where Meal.Protien.Contains("chicken")
-                                                select Meal;
+                        Console.WriteLine("You chose Chicken");
+                        Console.WriteLine(" ");
+                        var linqSoupMeals = from Meal in soupMeals
+                                            where Meal.Protein.Contains("chicken")
+                                            select Meal;
 
-                            foreach (var Meal in linqSoupMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var soupMealList = from Meal in linqSoupMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in soupMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
+                        foreach (var Meal in linqSoupMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var soupMealList = from Meal in linqSoupMeals
+                                           where Meal.Number == ingredientsList
+                                           select Meal;
+
+                        foreach (var Meal in soupMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 3)
                     {
-                            Console.WriteLine("You chose Turkey");
-                            Console.WriteLine(" ");
-                            var linqSoupMeals = from Meal in soupMeals
-                                                where Meal.Protien.Contains("turkey")
-                                                select Meal;
+                        Console.WriteLine("You chose Turkey");
+                        Console.WriteLine(" ");
+                        var linqSoupMeals = from Meal in soupMeals
+                                            where Meal.Protein.Contains("turkey")
+                                            select Meal;
 
-                            foreach (var Meal in linqSoupMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var soupMealList = from Meal in linqSoupMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in soupMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
+                        foreach (var Meal in linqSoupMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var soupMealList = from Meal in linqSoupMeals
+                                           where Meal.Number == ingredientsList
+                                           select Meal;
+
+                        foreach (var Meal in soupMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 4)
                     {
                         Console.WriteLine("You chose Beef");
-                            Console.WriteLine(" ");
-                            var linqSoupMeals = from Meal in soupMeals
-                                                where Meal.Protien.Contains("beef")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqSoupMeals = from Meal in soupMeals
+                                            where Meal.Protein.Contains("beef")
+                                            select Meal;
 
-                            foreach (var Meal in linqSoupMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var soupMealList = from Meal in linqSoupMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in soupMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
+                        foreach (var Meal in linqSoupMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var soupMealList = from Meal in linqSoupMeals
+                                           where Meal.Number == ingredientsList
+                                           select Meal;
+
+                        foreach (var Meal in soupMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 5)
                     {
                         Console.WriteLine("You chose Sausage");
-                            Console.WriteLine(" ");
-                            var linqSoupMeals = from Meal in soupMeals
-                                                where Meal.Protien.Contains("sausage")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqSoupMeals = from Meal in soupMeals
+                                            where Meal.Protein.Contains("sausage")
+                                            select Meal;
 
-                            foreach (var Meal in linqSoupMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var soupMealList = from Meal in linqSoupMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in soupMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-                        }
-                        else if (userInput3 == 6)
+                        foreach (var Meal in linqSoupMeals)
                         {
-                            Console.WriteLine("You chose Eggs");
-                            Console.WriteLine(" ");
-                            var linqSoupMeals = from Meal in soupMeals
-                                                 where Meal.Protien.Contains("egg")
-                                                 select Meal;
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
+                        }
 
-                            foreach (var Meal in linqSoupMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var soupMealList = from Meal in linqSoupMeals
+                                           where Meal.Number == ingredientsList
+                                           select Meal;
 
+                        foreach (var Meal in soupMealList)
+                        {
                             Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var soupMealList = from Meal in linqSoupMeals
-                                                where Meal.Number == ingredientsList
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 6)
+                    {
+                        Console.WriteLine("You chose Eggs");
+                        Console.WriteLine(" ");
+                        var linqSoupMeals = from Meal in soupMeals
+                                                where Meal.Protein.Contains("egg")
                                                 select Meal;
 
-                            foreach (var Meal in soupMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqSoupMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var soupMealList = from Meal in linqSoupMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in soupMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else
                     {
                         Console.WriteLine("Error: Please choose a valid option!");
                         Thread.Sleep(500);
@@ -299,219 +325,238 @@ namespace MealPlanner
                     if (userInput3 == 1)
                     {
                         Console.WriteLine("You chose Vegitarian");
-                            Console.WriteLine(" ");
-                            var linqPastaMeals = from Meal in pastaMeals
-                                                 where Meal.Protien.Contains("veggie")
-                                                 select Meal;
-
-                            foreach (var Meal in linqPastaMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var pastaMealList = from Meal in linqPastaMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqPastaMeals = from Meal in pastaMeals
+                                                where Meal.Protein.Contains("veggie")
                                                 select Meal;
 
-                            foreach (var Meal in pastaMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
+                        foreach (var Meal in linqPastaMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 2)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var pastaMealList = from Meal in linqPastaMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in pastaMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 2)
                     {
                         Console.WriteLine("You chose Chicken");
-                            Console.WriteLine(" ");
-                            var linqPastaMeals = from Meal in pastaMeals
-                                                 where Meal.Protien.Contains("chicken")
-                                                 select Meal;
-
-                            foreach (var Meal in linqPastaMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var pastaMealList = from Meal in linqPastaMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqPastaMeals = from Meal in pastaMeals
+                                                where Meal.Protein.Contains("chicken")
                                                 select Meal;
 
-                            foreach (var Meal in pastaMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqPastaMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 3)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var pastaMealList = from Meal in linqPastaMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in pastaMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 3)
                     {
                         Console.WriteLine("You chose Turkey");
-                            Console.WriteLine(" ");
-                            var linqPastaMeals = from Meal in pastaMeals
-                                                 where Meal.Protien.Contains("turkey")
-                                                 select Meal;
-
-                            foreach (var Meal in linqPastaMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var pastaMealList = from Meal in linqPastaMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqPastaMeals = from Meal in pastaMeals
+                                                where Meal.Protein.Contains("turkey")
                                                 select Meal;
 
-                            foreach (var Meal in pastaMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqPastaMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 4)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var pastaMealList = from Meal in linqPastaMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in pastaMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 4)
                     {
                         Console.WriteLine("You chose Beef");
-                            Console.WriteLine(" ");
-                            var linqPastaMeals = from Meal in pastaMeals
-                                                 where Meal.Protien.Contains("beef")
-                                                 select Meal;
-
-                            foreach (var Meal in linqPastaMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var pastaMealList = from Meal in linqPastaMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqPastaMeals = from Meal in pastaMeals
+                                                where Meal.Protein.Contains("beef")
                                                 select Meal;
 
-                            foreach (var Meal in pastaMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqPastaMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 5)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var pastaMealList = from Meal in linqPastaMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in pastaMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 5)
                     {
                         Console.WriteLine("You chose Sausage");
-                            Console.WriteLine(" ");
-                            var linqPastaMeals = from Meal in pastaMeals
-                                                 where Meal.Protien.Contains("sausage")
-                                                 select Meal;
-
-                            foreach (var Meal in linqPastaMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var pastaMealList = from Meal in linqPastaMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqPastaMeals = from Meal in pastaMeals
+                                                where Meal.Protein.Contains("sausage")
                                                 select Meal;
 
-                            foreach (var Meal in pastaMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqPastaMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 6)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var pastaMealList = from Meal in linqPastaMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in pastaMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 6)
                     {
                         Console.WriteLine("You chose Shrimp");
-                            Console.WriteLine(" ");
-                            var linqPastaMeals = from Meal in pastaMeals
-                                                 where Meal.Protien.Contains("shrimp")
-                                                 select Meal;
-
-                            foreach (var Meal in linqPastaMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var pastaMealList = from Meal in linqPastaMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqPastaMeals = from Meal in pastaMeals
+                                                where Meal.Protein.Contains("shrimp")
                                                 select Meal;
 
-                            foreach (var Meal in pastaMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqPastaMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var pastaMealList = from Meal in linqPastaMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in pastaMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else
                     {
                         Console.WriteLine("Error: Please choose a valid option!");
                         Thread.Sleep(500);
@@ -544,400 +589,433 @@ namespace MealPlanner
                     if (userInput3 == 1)
                     {
                         Console.WriteLine("You chose Vegitarian");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("veggie")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("veggie")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 2)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 2)
                     {
                         Console.WriteLine("You chose Chicken");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("chicken")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("chicken")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 3)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 3)
                     {
                         Console.WriteLine("You chose Turkey");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("turkey")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("turkey")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 4)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 4)
                     {
                         Console.WriteLine("You chose Beef");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("beef")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("beef")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 5)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 5)
                     {
                         Console.WriteLine("You chose Sausage");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("sausage")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("sausage")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 6)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 6)
                     {
                         Console.WriteLine("You chose Shrimp");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("shrimp")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("shrimp")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 7)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 7)
                     {
                         Console.WriteLine("You chose Steak");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("steak")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("steak")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 8)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 8)
                     {
                         Console.WriteLine("You chose Tofu");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("tofu")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("tofu")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 9)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 9)
                     {
                         Console.WriteLine("You chose Spam");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("spam")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("spam")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 10)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 10)
                     {
                         Console.WriteLine("You chose Tuna");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("tuna")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("tuna")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 11)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 11)
                     {
                         Console.WriteLine("I Promise this one goes somewhere.");
-                            Console.WriteLine(" ");
-                            var linqRiceMeals = from Meal in riceMeals
-                                                where Meal.Protien.Contains("leftover")
-                                                select Meal;
+                        Console.WriteLine(" ");
+                        var linqRiceMeals = from Meal in riceMeals
+                                            where Meal.Protein.Contains("leftover")
+                                            select Meal;
 
-                            foreach (var Meal in linqRiceMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var riceMealList = from Meal in linqRiceMeals
-                                               where Meal.Number == ingredientsList
-                                               select Meal;
-
-                            foreach (var Meal in riceMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqRiceMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var riceMealList = from Meal in linqRiceMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in riceMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else
                     {
                         Console.WriteLine("Error: Please choose a valid option!");
                         Thread.Sleep(500);
@@ -968,275 +1046,315 @@ namespace MealPlanner
                     if (userInput3 == 1)
                     {
                         Console.WriteLine("You chose Vegitarian");
-                            Console.WriteLine(" ");
-                            var linqAsianMeals = from Meal in asianMeals
-                                                 where Meal.Protien.Contains("veggie")
-                                                 select Meal;
-
-                            foreach (var Meal in linqAsianMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var asianMealList = from Meal in linqAsianMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqAsianMeals = from Meal in asianMeals
+                                                where Meal.Protein.Contains("veggie")
                                                 select Meal;
 
-                            foreach (var Meal in asianMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
+                        foreach (var Meal in linqAsianMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var asianMealList = from Meal in linqAsianMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in asianMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 2)
                     {
                         Console.WriteLine("You chose Chicken");
-                            Console.WriteLine(" ");
-                            var linqAsianMeals = from Meal in asianMeals
-                                                 where Meal.Protien.Contains("chicken")
-                                                 select Meal;
-
-                            foreach (var Meal in linqAsianMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var asianMealList = from Meal in linqAsianMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqAsianMeals = from Meal in asianMeals
+                                                where Meal.Protein.Contains("chicken")
                                                 select Meal;
 
-                            foreach (var Meal in asianMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
+                        foreach (var Meal in linqAsianMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var asianMealList = from Meal in linqAsianMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in asianMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 3)
                     {
                         Console.WriteLine("You chose Pork");
-                            Console.WriteLine(" ");
-                            var linqAsianMeals = from Meal in asianMeals
-                                                 where Meal.Protien.Contains("pork")
-                                                 select Meal;
-
-                            foreach (var Meal in linqAsianMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var asianMealList = from Meal in linqAsianMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqAsianMeals = from Meal in asianMeals
+                                                where Meal.Protein.Contains("pork")
                                                 select Meal;
 
-                            foreach (var Meal in asianMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
+                        foreach (var Meal in linqAsianMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var asianMealList = from Meal in linqAsianMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in asianMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 4)
                     {
                         Console.WriteLine("You chose Steak");
-                            Console.WriteLine(" ");
-                            var linqAsianMeals = from Meal in asianMeals
-                                                 where Meal.Protien.Contains("steak")
-                                                 select Meal;
-
-                            foreach (var Meal in linqAsianMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var asianMealList = from Meal in linqAsianMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqAsianMeals = from Meal in asianMeals
+                                                where Meal.Protein.Contains("steak")
                                                 select Meal;
 
-                            foreach (var Meal in asianMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
+                        foreach (var Meal in linqAsianMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var asianMealList = from Meal in linqAsianMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in asianMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 5)
                     {
                         Console.WriteLine("You chose Tuna");
-                            Console.WriteLine(" ");
-                            var linqAsianMeals = from Meal in asianMeals
-                                                 where Meal.Protien.Contains("tuna")
-                                                 select Meal;
-
-                            foreach (var Meal in linqAsianMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var asianMealList = from Meal in linqAsianMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqAsianMeals = from Meal in asianMeals
+                                                where Meal.Protein.Contains("tuna")
                                                 select Meal;
 
-                            foreach (var Meal in asianMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
+                        foreach (var Meal in linqAsianMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var asianMealList = from Meal in linqAsianMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in asianMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 6)
                     {
                         Console.WriteLine("You chose Spam");
-                            Console.WriteLine(" ");
-                            var linqAsianMeals = from Meal in asianMeals
-                                                 where Meal.Protien.Contains("spam")
-                                                 select Meal;
-
-                            foreach (var Meal in linqAsianMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var asianMealList = from Meal in linqAsianMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqAsianMeals = from Meal in asianMeals
+                                                where Meal.Protein.Contains("spam")
                                                 select Meal;
 
-                            foreach (var Meal in asianMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
+                        foreach (var Meal in linqAsianMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var asianMealList = from Meal in linqAsianMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in asianMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 7)
                     {
                         Console.WriteLine("You chose Eggs");
-                            Console.WriteLine(" ");
-                            var linqAsianMeals = from Meal in asianMeals
-                                                 where Meal.Protien.Contains("egg")
-                                                 select Meal;
-
-                            foreach (var Meal in linqAsianMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var asianMealList = from Meal in linqAsianMeals
-                                                where Meal.Number == ingredientsList
+                        Console.WriteLine(" ");
+                        var linqAsianMeals = from Meal in asianMeals
+                                                where Meal.Protein.Contains("egg")
                                                 select Meal;
 
-                            foreach (var Meal in asianMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
+                        foreach (var Meal in linqAsianMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var asianMealList = from Meal in linqAsianMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in asianMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else if (userInput3 == 8)
                     {
                         Console.WriteLine("You chose Tofu");
-                            Console.WriteLine(" ");
-                            var linqAsianMeals = from Meal in asianMeals
-                                                 where Meal.Protien.Contains("tofu")
-                                                 select Meal;
+                        Console.WriteLine(" ");
+                        var linqAsianMeals = from Meal in asianMeals
+                                             where Meal.Protein.Contains("tofu")
+                                             select Meal;
 
-                            foreach (var Meal in linqAsianMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var asianMealList = from Meal in linqAsianMeals
-                                                where Meal.Number == ingredientsList
-                                                select Meal;
-
-                            foreach (var Meal in asianMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
+                        foreach (var Meal in linqAsianMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var asianMealList = from Meal in linqAsianMeals
+                                            where Meal.Number == ingredientsList
+                                            select Meal;
+
+                        foreach (var Meal in asianMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
                     else
                     {
                         Console.WriteLine("Error: Please choose a valid option!");
@@ -1270,364 +1388,394 @@ namespace MealPlanner
                     if (userInput3 == 1)
                     {
                         Console.WriteLine("You chose Vegitarian");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("veggie")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("veggie")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 2)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 2)
                     {
                         Console.WriteLine("You chose Chicken");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("chicken")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("chicken")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 3)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 3)
                     {
                         Console.WriteLine("You chose Turkey");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("turkey")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("turkey")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 4)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 4)
                     {
                         Console.WriteLine("You chose Beef");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("beef")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("beef")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 5)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 5)
                     {
                         Console.WriteLine("You chose Lamb");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("lamb")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("lamb")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 6)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 6)
                     {
                         Console.WriteLine("You chose Spam");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("spam")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("spam")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 7)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 7)
                     {
                         Console.WriteLine("You chose Steak");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("steak")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("steak")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 8)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 8)
                     {
                         Console.WriteLine("You chose Tofu");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("tofu")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("tofu")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 9)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 9)
                     {
                         Console.WriteLine("You chose Ham");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("ham")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("ham")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else if (userInput3 == 10)
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else if (userInput3 == 10)
                     {
                         Console.WriteLine("You chose Pepperoni");
-                            Console.WriteLine(" ");
-                            var linqComfortMeals = from Meal in comfortMeals
-                                                   where Meal.Protien.Contains("pepperoni")
-                                                   select Meal;
+                        Console.WriteLine(" ");
+                        var linqComfortMeals = from Meal in comfortMeals
+                                               where Meal.Protein.Contains("pepperoni")
+                                               select Meal;
 
-                            foreach (var Meal in linqComfortMeals)
-                            {
-                                Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
-                            int ingredientsList = Convert.ToInt32(Console.ReadLine());
-                            var comfortMealList = from Meal in linqComfortMeals
-                                                  where Meal.Number == ingredientsList
-                                                  select Meal;
-
-                            foreach (var Meal in comfortMealList)
-                            {
-                                Console.WriteLine(" ");
-                                Console.WriteLine($"{Meal.HowToMake}");
-                            }
-
-                            Console.WriteLine(" ");
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Press 0 to close the program.");
-                            Console.WriteLine("Press any other number to go back to the beginning.");
-                            int finalInput = Convert.ToInt32(Console.ReadLine());
-                            while (finalInput == 0)
-                                Environment.Exit(0);
-
-
+                        foreach (var Meal in linqComfortMeals)
+                        {
+                            Console.WriteLine($"Option {Meal.Number}: {Meal.Name}");
                         }
-                        else
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press the number of the meal\nyou would like ingredients for.");
+                        int ingredientsList = Convert.ToInt32(Console.ReadLine());
+                        var comfortMealList = from Meal in linqComfortMeals
+                                              where Meal.Number == ingredientsList
+                                              select Meal;
+
+                        foreach (var Meal in comfortMealList)
+                        {
+                            Console.WriteLine(" ");
+                            Console.WriteLine($"{Meal.HowToMake}");
+                        }
+
+                        Console.WriteLine(" ");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Press 0 to close the program.");
+                        Console.WriteLine("Press any other number to go back to the beginning.");
+                        int finalInput = Convert.ToInt32(Console.ReadLine());
+                        while (finalInput == 0)
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                    }
+                    else
                     {
                         Console.WriteLine("Error: Please choose a valid option!");
                         Thread.Sleep(500);
@@ -1648,9 +1796,13 @@ namespace MealPlanner
                         int finalInput = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine(" ");
                         while (finalInput == 0)
-                            Environment.Exit(0); 
-                   
-                    }
+                        {
+                            Console.WriteLine("Goodbye!");
+                            Thread.Sleep(1000);
+                            Environment.Exit(0);
+                        }
+
+                }
                 else
                 {
                     Console.WriteLine("Error: Please choose a valid option!");

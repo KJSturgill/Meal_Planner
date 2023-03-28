@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace MealPlanner
 {
-    internal class Meal : Food
+    public class Meal : Food
     {
-        public string[] Protien { get; set; }
+        public string[] Protein { get; set; }
         public string HowToMake { get; set; }
 
-        public Meal(int number, string name, string[] protien, string howToMake)
+        public Meal(int number, string name, string[] protein, string howToMake)
         {
             this.Number = number;
             this.Name = name;
-            this.Protien= protien;
+            this.Protein= protein;
             this.HowToMake= howToMake;
         }
 
